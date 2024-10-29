@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Debounce & Throttle Demo</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="debounce.js" defer></script>
   </head>
   <body>
     <main>
-      <input type="text" placeholder="type here..." id="input" />
-      <ul id="list"></ul>
+      <div class="container">
+        <input type="text" placeholder="Start Searching Name..." id="input" />
+        <p>API Hit Count: <span id="api-hit-count"></span></p>
+        <ul id="list"></ul>
+      </div>
     </main>
   </body>
 </html>
