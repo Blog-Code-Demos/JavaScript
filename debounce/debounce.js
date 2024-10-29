@@ -9,8 +9,11 @@ const MOCK_USERS = [
   "Kaliyug",
 ];
 
-const input = document.querySelector("#input");
 const list = document.querySelector("#list");
+const input = document.querySelector("#input");
+const apiHitCount = document.querySelector("#api-hit-count");
+
+let apiCount = 0;
 
 printList();
 
@@ -30,7 +33,11 @@ function debounce(cb, delay = 700) {
   return (text) => {
     clearTimeout(timer);
     list.innerHTML = "Searching...";
-    timer = setTimeout(() => cb(text), delay);
+    timer = setTimeout(() => {
+      apiCount++;
+      apiHitCount.innerText = apiCount;
+      cb(text);
+    }, delay);
   };
 }
 
