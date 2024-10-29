@@ -11,7 +11,9 @@ const MOCK_USERS = [
 
 const list = document.querySelector("#list");
 const input = document.querySelector("#input");
+const resetBtn = document.querySelector("#reset");
 const apiHitCount = document.querySelector("#api-hit-count");
+const debounceCheckbox = document.querySelector("#debounce-checkbox");
 
 let apiCount = 0;
 
@@ -41,7 +43,7 @@ function debounce(cb, delay = 700) {
   };
 }
 
-const debounceEventHandler = debounce((text) => {
+function findUser(text) {
   const items = MOCK_USERS.filter((user) => {
     if (user.includes(text)) return user;
   });
@@ -59,6 +61,28 @@ const debounceEventHandler = debounce((text) => {
   } else {
     list.innerText = "User Not Found!!!";
   }
-});
+}
 
-input.addEventListener("input", (e) => debounceEventHandler(e.target.value));
+function reset() {
+  apiCount = 0;
+  apiHitCount.innerText = apiCount;
+  list.innerHTML = "";
+  input.value = "";
+  printList();
+}
+
+const debounceEventHandler = debounce(findUser);
+
+debounceCheckbox.addEventListener("change", reset);
+
+resetBtn.addEventListener("click", reset);
+
+input.addEventListener("input", (e) => {
+  if (debounceCheckbox.checked) {
+    debounceEventHandler(e.target.value);
+  } else {
+    apiCount++;
+    findUser(e.target.value);
+    apiHitCount.innerText = apiCount;
+  }
+});
