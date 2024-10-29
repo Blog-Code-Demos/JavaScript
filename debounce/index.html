@@ -9,9 +9,25 @@
   </head>
   <body>
     <main>
-      <div class="container">
-        <input type="text" placeholder="Start Searching Name..." id="input" />
-        <p>API Hit Count: <span id="api-hit-count"></span></p>
+      <div class="debounce__container">
+        <div class="debounce__title">
+          <h3>
+            Debounce:
+            <input type="checkbox" id="debounce-checkbox" checked />
+          </h3>
+        </div>
+        <input
+          type="text"
+          placeholder="Start Searching Name..."
+          id="input"
+          class="debounce__input"
+        />
+        <div class="debounce__api-hit-count">
+          <p>API Hit Count: <span id="api-hit-count">0</span></p>
+          <button class="debounce__api-hit-count-reset" id="reset">
+            Reset
+          </button>
+        </div>
         <ul id="list"></ul>
       </div>
     </main>

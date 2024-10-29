@@ -21,7 +21,7 @@ main {
   height: 100%;
 }
 
-.container {
+.debounce__container {
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -35,6 +35,10 @@ main {
   color: white;
 }
 
+.debounce__container .debounce__title {
+  margin-bottom: 1rem;
+}
+
 #input {
   padding: 1rem;
   width: 25rem;
@@ -44,8 +48,23 @@ main {
   outline: none;
 }
 
-.container p {
+.debounce__api-hit-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
+}
+
+.debounce__api-hit-count-reset {
+  color: #333;
+  background-color: yellow;
+  border: 0;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.debounce__container p {
   border-bottom: 2px solid yellow;
   width: fit-content;
 }
